@@ -3,7 +3,7 @@ import { Layout } from '@components/Generals/Layout';
 const MyAccount = () => {
 	return (
 		<Layout>
-			<div></div>
+			<div>asd</div>
 		</Layout>
 	);
 };

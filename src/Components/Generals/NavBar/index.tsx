@@ -2,7 +2,7 @@ import React from 'react';
 import { ItemNavBar } from './ItemNavBar';
 const NavBar = () => {
 	return (
-		<nav className="flex justify-between items-center fixed z-10 top-0 left-0 right-0 py-5 px-8 text-sm font-light shadow-md">
+		<nav className="flex justify-between items-center fixed z-10 top-0 left-0 right-0 py-5 px-8 text-sm font-light shadow-md bg-white">
 			<ul className="flex gap-x-4 items-center">
 				<ItemNavBar speacialClass="font-bold text-lg" href="/">
 					Shopi

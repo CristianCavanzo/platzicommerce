@@ -1,21 +1,38 @@
+import { Products } from '@types';
 import { useProducts } from 'hooks/useProducts';
 import React, { ReactNode, createContext, useContext } from 'react';
-
-interface Context {
+export interface Context {
 	state: {
+		productOpen: Boolean;
 		shoppingCard: number;
+		productInfo: Products;
 	};
 	setState: {
 		handleCount: () => void;
+		// eslint-disable-next-line no-unused-vars
+		openAside: (typeShow: boolean) => void;
+		// eslint-disable-next-line no-unused-vars
+		showProduct: (product: Products) => void;
 	};
 }
 
 const ProductsContext = createContext<Context>({
 	state: {
 		shoppingCard: 0,
+		productOpen: false,
+		productInfo: {
+			id: 0,
+			title: '',
+			price: 0,
+			description: '',
+			category: undefined,
+			images: [],
+		},
 	},
 	setState: {
 		handleCount: (): void => {},
+		openAside: (): void => {},
+		showProduct: (): void => {},
 	},
 });
 

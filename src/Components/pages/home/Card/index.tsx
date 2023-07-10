@@ -3,13 +3,30 @@ import { Products } from '@types';
 import Image from 'next/image';
 import React from 'react';
 import { PlusIcon } from '@heroicons/react/24/solid';
-const Card = ({ category, price, images, title }: Products) => {
+const Card = ({ category, price, images, title, description, id }: Products) => {
 	const {
-		setState: { handleCount },
+		setState: { handleCount, showProduct },
 	} = ProductsConsumer();
 
+	const handleProduct = () => {
+		showProduct({
+			category,
+			price,
+			images,
+			title,
+			id,
+			description,
+		});
+	};
+
 	return (
-		<div className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md">
+		<div
+			className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md"
+			onClick={handleProduct}
+			onKeyDown={handleProduct}
+			role="button"
+			tabIndex={0}
+		>
 			<figure className="relative mb-2 w-full h-3/4">
 				<button
 					className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 z-[4]"

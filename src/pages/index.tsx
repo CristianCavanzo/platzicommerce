@@ -4,6 +4,7 @@ import React from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import axios from 'axios';
 import { Products } from '@types';
+import { ProductDetail } from '@components/Generals/ProductDetail';
 
 export const getServerSideProps: GetServerSideProps<{ products: Products[] }> = async () => {
 	try {
@@ -25,6 +26,7 @@ const Home = ({ products }: InferGetServerSidePropsType<typeof getServerSideProp
 					<Card key={product.id} {...product} />
 				))}
 			</div>
+			<ProductDetail />
 		</Layout>
 	);
 };

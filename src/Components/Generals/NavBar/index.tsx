@@ -1,6 +1,7 @@
 import React from 'react';
 import { ItemNavBar } from './ItemNavBar';
 import { ProductsConsumer } from '@context/Products';
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 const NavBar = () => {
 	const { state } = ProductsConsumer();
 	return (
@@ -21,7 +22,9 @@ const NavBar = () => {
 				<ItemNavBar href="/MyOrders">My orders</ItemNavBar>
 				<ItemNavBar href="/MyAccount">My Account</ItemNavBar>
 				<ItemNavBar href="">Sign in</ItemNavBar>
-				<li> {state.shoppingCard} 🛒</li>
+				<li className="flex items-center gap-x-1">
+					{state.shoppingCard} <ShoppingCartIcon className="h-6 w-6 " />
+				</li>
 			</ul>
 		</nav>
 	);

@@ -1,7 +1,6 @@
 import { Layout } from '@components/Generals/Layout';
 import { Card } from '@components/pages/home/Card';
-import React, { FC } from 'react';
-import I from '@img/i.jpg';
+import React from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import axios from 'axios';
 import { Products } from '@types';

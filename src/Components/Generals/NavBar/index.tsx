@@ -1,6 +1,8 @@
 import React from 'react';
 import { ItemNavBar } from './ItemNavBar';
+import { ProductsConsumer } from '@context/Products';
 const NavBar = () => {
+	const { state } = ProductsConsumer();
 	return (
 		<nav className="flex justify-between items-center fixed z-10 top-0 left-0 right-0 py-5 px-8 text-sm font-light shadow-md bg-white">
 			<ul className="flex gap-x-4 items-center">
@@ -19,7 +21,7 @@ const NavBar = () => {
 				<ItemNavBar href="/MyOrders">My orders</ItemNavBar>
 				<ItemNavBar href="/MyAccount">My Account</ItemNavBar>
 				<ItemNavBar href="">Sign in</ItemNavBar>
-				<li>🛒</li>
+				<li> {state.shoppingCard} 🛒</li>
 			</ul>
 		</nav>
 	);

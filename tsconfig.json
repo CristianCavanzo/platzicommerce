@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"baseUrl": "./",
+		"baseUrl": "./src/",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -15,10 +15,11 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"paths": {
-			"@styles/*": ["src/styles/*"],
-			"@components/*": ["src/Components/*"],
-			"@img/*": ["src/public/img/*"],
-			"@types": ["src/.d.ts"]
+			"@styles/*": ["styles/*"],
+			"@components/*": ["Components/*"],
+			"@img/*": ["public/img/*"],
+			"@types": [".d.ts"],
+			"@context/*": ["Context/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

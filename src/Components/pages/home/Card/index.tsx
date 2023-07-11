@@ -2,10 +2,11 @@ import { ProductsConsumer } from '@context/Products';
 import { Products } from '@types';
 import Image from 'next/image';
 import React, { KeyboardEvent, MouseEvent } from 'react';
-import { PlusIcon } from '@heroicons/react/24/solid';
+import { CheckIcon, PlusIcon } from '@heroicons/react/24/solid';
 const Card = ({ category, price, image, title, description, id }: Products) => {
 	const {
 		setState: { showProduct, addProductsToCard },
+		state,
 	} = ProductsConsumer();
 	const product = {
 		category,
@@ -20,15 +21,11 @@ const Card = ({ category, price, image, title, description, id }: Products) => {
 		showProduct(product);
 	};
 
-	return (
-		<div
-			className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md"
-			onClick={(event) => handleProduct(event)}
-			onKeyDown={(event) => handleProduct(event)}
-			role="button"
-			tabIndex={0}
-		>
-			<figure className="relative mb-2 w-full h-3/4">
+	const renderIcon = () => {
+		const added = state.cartProducts.find((item) => item.id === id);
+
+		if (!added) {
+			return (
 				<button
 					className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 z-[4]"
 					onClick={(event) => {
@@ -38,6 +35,25 @@ const Card = ({ category, price, image, title, description, id }: Products) => {
 				>
 					<PlusIcon className="h-4 w-4" />
 				</button>
+			);
+		}
+		return (
+			<button className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 z-[4]">
+				<CheckIcon className="h-4 w-4 text-white" />
+			</button>
+		);
+	};
+
+	return (
+		<div
+			className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md"
+			onClick={(event) => handleProduct(event)}
+			onKeyDown={(event) => handleProduct(event)}
+			role="button"
+			tabIndex={0}
+		>
+			<figure className="relative mb-2 w-full h-3/4">
+				{renderIcon()}
 				<Image fill alt={title} src={image} className="object-cover" quality={100} />
 				<span className="absolute bottom-0 left-0 bg-white/70 rounded-lg text-xs  m-2 px-4 py-0.5">
 					{category}

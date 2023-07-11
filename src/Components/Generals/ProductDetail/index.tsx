@@ -16,24 +16,22 @@ const ProductDetail = () => {
 			title="Detail"
 			closeFunction={() => showProduct(false)}
 		>
-			<div className="h-full">
-				<div className="relative w-full h-1/3">
-					{productInfo.image && (
-						<Image
-							fill
-							src={productInfo.image}
-							className="object-cover rounded-xl"
-							quality={100}
-							alt={productInfo.title}
-						/>
-					)}
-				</div>
-				<p className="flex flex-col pt-4">
-					<span className="font-medium text-2xl">{productInfo.price}</span>
-					<span className="font-medium text-md">{productInfo.title}</span>
-					<span className="text-sm">{productInfo.description}</span>
-				</p>
+			<div className="relative w-full h-1/3">
+				{productInfo.image && (
+					<Image
+						fill
+						src={productInfo.image}
+						className="object-cover rounded-xl"
+						quality={100}
+						alt={productInfo.title}
+					/>
+				)}
 			</div>
+			<p className="flex flex-col pt-4">
+				<span className="font-medium text-2xl">{productInfo.price}</span>
+				<span className="font-medium text-md">{productInfo.title}</span>
+				<span className="text-sm">{productInfo.description}</span>
+			</p>
 		</AsideComponent>
 	);
 };

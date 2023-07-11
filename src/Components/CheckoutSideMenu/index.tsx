@@ -1,5 +1,5 @@
 import { AsideComponent } from '@components/Generals/Aside';
-import { OrderCard } from '@components/Generals/ProductDetail/OrderCard';
+import { OrderCard } from '@components/CheckoutSideMenu/OrderCard';
 import { ProductsConsumer } from '@context/Products';
 import React from 'react';
 const CheckoutSideManu = () => {

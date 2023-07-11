@@ -3,14 +3,14 @@ import { Products } from '@types';
 import Image from 'next/image';
 import React, { KeyboardEvent, MouseEvent } from 'react';
 import { PlusIcon } from '@heroicons/react/24/solid';
-const Card = ({ category, price, images, title, description, id }: Products) => {
+const Card = ({ category, price, image, title, description, id }: Products) => {
 	const {
 		setState: { showProduct, addProductsToCard },
 	} = ProductsConsumer();
 	const product = {
 		category,
 		price,
-		images,
+		image,
 		title,
 		id,
 		description,
@@ -38,9 +38,9 @@ const Card = ({ category, price, images, title, description, id }: Products) => 
 				>
 					<PlusIcon className="h-4 w-4" />
 				</button>
-				<Image fill alt={title} src={images[0]} className="object-cover" quality={100} />
+				<Image fill alt={title} src={image} className="object-cover" quality={100} />
 				<span className="absolute bottom-0 left-0 bg-white/70 rounded-lg text-xs  m-2 px-4 py-0.5">
-					{category.name}
+					{category}
 				</span>
 			</figure>
 			<p className="flex justify-between">

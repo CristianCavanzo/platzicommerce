@@ -31,7 +31,7 @@ const ProductsContext = createContext<Context>({
 			price: 0,
 			description: '',
 			category: undefined,
-			images: [],
+			image: '',
 		},
 		cartProducts: [],
 	},

@@ -1,10 +1,11 @@
 import { AsideComponent } from '@components/Generals/Aside';
+import { OrderCard } from '@components/Generals/ProductDetail/OrderCard';
 import { ProductsConsumer } from '@context/Products';
 import React from 'react';
 const CheckoutSideManu = () => {
 	const { state, setState } = ProductsConsumer();
 	const { openChekout } = setState;
-	const { checkoutOpen } = state;
+	const { checkoutOpen, cartProducts } = state;
 
 	return (
 		<AsideComponent
@@ -13,7 +14,11 @@ const CheckoutSideManu = () => {
 				openChekout(false);
 			}}
 			open={checkoutOpen}
-		/>
+		>
+			{cartProducts.map((product) => (
+				<OrderCard key={product.id} {...product} />
+			))}
+		</AsideComponent>
 	);
 };
 

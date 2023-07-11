@@ -9,10 +9,12 @@ import { ProductDetail } from '@components/Generals/ProductDetail';
 export const getServerSideProps: GetServerSideProps<{ products: Products[] }> = async () => {
 	try {
 		const { data: products } = await axios<Products[]>({
-			url: 'https://api.escuelajs.co/api/v1/products?offset=0&limit=10',
+			// url: 'https://api.escuelajs.co/api/v1/products?offset=1&limit=10',
+			url: 'https://fakestoreapi.com/products',
 		});
 		return { props: { products } };
 	} catch (error) {
+		console.log(error);
 		return { notFound: true };
 	}
 };

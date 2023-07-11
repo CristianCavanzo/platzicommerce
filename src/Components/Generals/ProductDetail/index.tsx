@@ -18,13 +18,15 @@ const ProductDetail = () => {
 		>
 			<div className="h-full">
 				<div className="relative w-full h-1/3">
-					<Image
-						fill
-						src={productInfo.images[0]}
-						className="object-cover rounded-xl"
-						quality={100}
-						alt={productInfo.title}
-					/>
+					{productInfo.image && (
+						<Image
+							fill
+							src={productInfo.image}
+							className="object-cover rounded-xl"
+							quality={100}
+							alt={productInfo.title}
+						/>
+					)}
 				</div>
 				<p className="flex flex-col pt-4">
 					<span className="font-medium text-2xl">{productInfo.price}</span>

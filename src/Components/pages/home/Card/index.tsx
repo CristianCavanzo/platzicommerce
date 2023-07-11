@@ -1,36 +1,40 @@
 import { ProductsConsumer } from '@context/Products';
 import { Products } from '@types';
 import Image from 'next/image';
-import React from 'react';
+import React, { KeyboardEvent, MouseEvent } from 'react';
 import { PlusIcon } from '@heroicons/react/24/solid';
 const Card = ({ category, price, images, title, description, id }: Products) => {
 	const {
-		setState: { handleCount, showProduct },
+		setState: { showProduct, addProductsToCard },
 	} = ProductsConsumer();
-
-	const handleProduct = () => {
-		showProduct({
-			category,
-			price,
-			images,
-			title,
-			id,
-			description,
-		});
+	const product = {
+		category,
+		price,
+		images,
+		title,
+		id,
+		description,
+	};
+	const handleProduct = (event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>) => {
+		event.stopPropagation();
+		showProduct(product);
 	};
 
 	return (
 		<div
 			className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-md"
-			onClick={handleProduct}
-			onKeyDown={handleProduct}
+			onClick={(event) => handleProduct(event)}
+			onKeyDown={(event) => handleProduct(event)}
 			role="button"
 			tabIndex={0}
 		>
 			<figure className="relative mb-2 w-full h-3/4">
 				<button
 					className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 z-[4]"
-					onClick={handleCount}
+					onClick={(event) => {
+						event.stopPropagation();
+						addProductsToCard(product);
+					}}
 				>
 					<PlusIcon className="h-4 w-4" />
 				</button>

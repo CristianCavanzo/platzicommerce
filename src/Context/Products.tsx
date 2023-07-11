@@ -6,13 +6,17 @@ export interface Context {
 		productOpen: Boolean;
 		shoppingCard: number;
 		productInfo: Products;
+		cartProducts: Products[];
+		checkoutOpen: Boolean;
 	};
 	setState: {
 		handleCount: () => void;
-		// eslint-disable-next-line no-unused-vars
+		/* eslint-disable no-unused-vars */
 		openAside: (typeShow: boolean) => void;
-		// eslint-disable-next-line no-unused-vars
+		openChekout: (typeShow: boolean) => void;
 		showProduct: (product: Products) => void;
+		addProductsToCard: (product: Products) => void;
+		/* eslint-enable no-unused-vars */
 	};
 }
 
@@ -20,6 +24,7 @@ const ProductsContext = createContext<Context>({
 	state: {
 		shoppingCard: 0,
 		productOpen: false,
+		checkoutOpen: false,
 		productInfo: {
 			id: 0,
 			title: '',
@@ -28,11 +33,14 @@ const ProductsContext = createContext<Context>({
 			category: undefined,
 			images: [],
 		},
+		cartProducts: [],
 	},
 	setState: {
-		handleCount: (): void => {},
-		openAside: (): void => {},
-		showProduct: (): void => {},
+		handleCount: () => {},
+		openChekout: () => {},
+		openAside: () => {},
+		showProduct: () => {},
+		addProductsToCard: () => {},
 	},
 });
 

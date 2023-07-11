@@ -1,7 +1,7 @@
 import React from 'react';
-import { XMarkIcon } from '@heroicons/react/24/solid';
-import { ProductsConsumer } from '@context/Products';
 import Image from 'next/image';
+import { ProductsConsumer } from '@context/Products';
+import { AsideComponent } from '@components/Generals/Aside';
 
 const ProductDetail = () => {
 	const {
@@ -9,18 +9,13 @@ const ProductDetail = () => {
 		setState: { openAside: showProduct },
 	} = ProductsConsumer();
 	const productInfo = state.productInfo;
+
 	return (
-		<aside
-			className={`${
-				!state.productOpen && 'hidden'
-			} w-[300px] flex flex-col rounded-xl bg-white fixed right-8 border border-black bottom-4 top-20 max-h-screen overflow-y-auto p-4 z-20`}
+		<AsideComponent
+			open={state.productOpen}
+			title="Detail"
+			closeFunction={() => showProduct(false)}
 		>
-			<div className="flex justify-between items-center">
-				<h2 className="font-medium text-xl">Detail</h2>
-				<button onClick={() => showProduct(false)}>
-					<XMarkIcon className="h-6 w-6 text-black cursor-pointer" />
-				</button>
-			</div>
 			<div className="h-full">
 				<div className="relative w-full h-1/3">
 					<Image
@@ -37,7 +32,7 @@ const ProductDetail = () => {
 					<span className="text-sm">{productInfo.description}</span>
 				</p>
 			</div>
-		</aside>
+		</AsideComponent>
 	);
 };
 

@@ -12,7 +12,7 @@ const useProducts = (): Context => {
 			price: 0,
 			description: '',
 			category: undefined,
-			images: [],
+			image: '',
 		},
 		cartProducts: [],
 		checkoutOpen: false,
@@ -37,9 +37,17 @@ const useProducts = (): Context => {
 
 	const addProductsToCard = (product: Products) => {
 		const products = state.cartProducts;
-		const newValue = state.shoppingCard + 1;
+		const newValue = state.cartProducts.length + 1;
 		products.push(product);
 		setState({ ...state, shoppingCard: newValue, cartProducts: products, checkoutOpen: true });
+	};
+
+	const deleteProductsCard = (id: number) => {
+		const productToDeleteIndex = state.cartProducts.findIndex((product) => product.id === id);
+		const newProducts = state.cartProducts;
+		newProducts.splice(productToDeleteIndex, 1);
+		const newValue = state.cartProducts.length;
+		setState({ ...state, cartProducts: newProducts, shoppingCard: newValue });
 	};
 
 	const setStateHandle: Context['setState'] = {
@@ -48,6 +56,7 @@ const useProducts = (): Context => {
 		showProduct,
 		addProductsToCard,
 		openChekout,
+		deleteProductsCard,
 	};
 	return { state, setState: setStateHandle };
 };

@@ -16,6 +16,7 @@ export interface Context {
 		openChekout: (typeShow: boolean) => void;
 		showProduct: (product: Products) => void;
 		addProductsToCard: (product: Products) => void;
+		deleteProductsCard: (id: number) => void;
 		/* eslint-enable no-unused-vars */
 	};
 }
@@ -41,6 +42,7 @@ const ProductsContext = createContext<Context>({
 		openAside: () => {},
 		showProduct: () => {},
 		addProductsToCard: () => {},
+		deleteProductsCard: () => {},
 	},
 });
 

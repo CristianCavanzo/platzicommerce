@@ -4,7 +4,7 @@ import { ProductsConsumer } from '@context/Products';
 import React from 'react';
 const CheckoutSideManu = () => {
 	const { state, setState } = ProductsConsumer();
-	const { openChekout } = setState;
+	const { openChekout, deleteProductsCard } = setState;
 	const { checkoutOpen, cartProducts } = state;
 
 	return (
@@ -16,7 +16,7 @@ const CheckoutSideManu = () => {
 			open={checkoutOpen}
 		>
 			{cartProducts.map((product) => (
-				<OrderCard key={product.id} {...product} />
+				<OrderCard key={product.id} deleteProductsCard={deleteProductsCard} {...product} />
 			))}
 		</AsideComponent>
 	);

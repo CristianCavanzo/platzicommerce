@@ -22,7 +22,7 @@ const AsideComponent = ({ title, children, open, closeFunction, extraData }: Pro
 				</button>
 			</div>
 			<div className="flex flex-col justify-between h-[calc(100%+3rem)]">
-				<div className="overflow-y-auto min-h-fit">{children}</div>
+				<div className="overflow-y-auto flex-1">{children}</div>
 				{extraData && extraData}
 			</div>
 		</aside>

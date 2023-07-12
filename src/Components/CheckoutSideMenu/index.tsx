@@ -5,9 +5,12 @@ import React from 'react';
 import { totalPrice } from 'utils';
 const CheckoutSideManu = () => {
 	const { state, setState } = ProductsConsumer();
-	const { openChekout, deleteProductsCard } = setState;
+	const { openChekout, deleteProductsCard, checkout } = setState;
 	const { checkoutOpen, cartProducts } = state;
 	const total = totalPrice(cartProducts);
+	const handleCheckout = () => {
+		checkout(total);
+	};
 	return (
 		<AsideComponent
 			title="My order"
@@ -16,10 +19,15 @@ const CheckoutSideManu = () => {
 			}}
 			open={checkoutOpen}
 			extraData={
-				<p className="flex items-center justify-between">
-					<span>Total: </span>
-					<span>{total}</span>
-				</p>
+				<div>
+					<p className="flex items-center justify-between">
+						<span>Total: </span>
+						<span className="text-bold">{total}</span>
+					</p>
+					<button className="w-full bg-black text-white py-2 rounded" onClick={handleCheckout}>
+						Checkout
+					</button>
+				</div>
 			}
 		>
 			<div>

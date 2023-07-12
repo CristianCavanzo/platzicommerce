@@ -16,6 +16,7 @@ const useProducts = (): Context => {
 		},
 		cartProducts: [],
 		checkoutOpen: false,
+		order: [],
 	});
 
 	const handleCount = () => {
@@ -49,6 +50,17 @@ const useProducts = (): Context => {
 		const newValue = state.cartProducts.length;
 		setState({ ...state, cartProducts: newProducts, shoppingCard: newValue });
 	};
+	const checkout = (totalPrice: Number) => {
+		const orderToAdd = {
+			date: new Date(),
+			products: state.cartProducts,
+			totalProducts: state.cartProducts.length,
+			totalPrice,
+		};
+		const order = [...state.order];
+		order.push(orderToAdd);
+		setState({ ...state, cartProducts: [], order, shoppingCard: 0 });
+	};
 
 	const setStateHandle: Context['setState'] = {
 		handleCount,
@@ -57,6 +69,7 @@ const useProducts = (): Context => {
 		addProductsToCard,
 		openChekout,
 		deleteProductsCard,
+		checkout,
 	};
 	return { state, setState: setStateHandle };
 };

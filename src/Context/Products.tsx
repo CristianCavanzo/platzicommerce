@@ -1,6 +1,13 @@
 import { Products } from '@types';
 import { useProducts } from 'hooks/useProducts';
 import React, { ReactNode, createContext, useContext } from 'react';
+interface Order {
+	date: Date;
+	products: Products[];
+	totalProducts: number;
+	totalPrice: Number;
+}
+
 export interface Context {
 	state: {
 		productOpen: Boolean;
@@ -8,6 +15,7 @@ export interface Context {
 		productInfo: Products;
 		cartProducts: Products[];
 		checkoutOpen: Boolean;
+		order: Order[];
 	};
 	setState: {
 		handleCount: () => void;
@@ -17,6 +25,7 @@ export interface Context {
 		showProduct: (product: Products) => void;
 		addProductsToCard: (product: Products) => void;
 		deleteProductsCard: (id: number) => void;
+		checkout: (total: number) => void;
 		/* eslint-enable no-unused-vars */
 	};
 }
@@ -35,6 +44,7 @@ const ProductsContext = createContext<Context>({
 			image: '',
 		},
 		cartProducts: [],
+		order: [],
 	},
 	setState: {
 		handleCount: () => {},
@@ -43,6 +53,7 @@ const ProductsContext = createContext<Context>({
 		showProduct: () => {},
 		addProductsToCard: () => {},
 		deleteProductsCard: () => {},
+		checkout: () => {},
 	},
 });
 

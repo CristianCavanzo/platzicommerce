@@ -1,14 +1,16 @@
-import { OrderCard } from '@components/Generals/OrderCard';
 import { Layout } from '@components/Generals/Layout';
+import { OrderCard } from '@components/Generals/OrderCard';
 import { ProductsConsumer } from '@context/Products';
-import React from 'react';
-import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
-
-const MyOrderLast = () => {
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
+const MyOrderId = () => {
+	const { query } = useRouter();
+	const id = query.id;
 	const { state } = ProductsConsumer();
 	const { order } = state;
-	order.at(-1);
+	const actual = order.find((order) => order.id === id);
 	return (
 		<Layout>
 			<div className="flex w-80 items-center mb-2  ">
@@ -18,7 +20,7 @@ const MyOrderLast = () => {
 				<h1 className="w-full text-center">My Orders</h1>
 			</div>
 			<div className="flex-col flex w-80 gap-y-4">
-				{order.at(-1)?.products.map((product) => (
+				{actual?.products.map((product) => (
 					<OrderCard key={product.id} {...product} />
 				))}
 			</div>
@@ -26,4 +28,4 @@ const MyOrderLast = () => {
 	);
 };
 
-export default MyOrderLast;
+export default MyOrderId;

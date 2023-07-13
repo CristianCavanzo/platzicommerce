@@ -20,6 +20,7 @@ const OrderCard = ({ image, title, price, deleteProductsCard, id }: Props) => {
 					</div>
 				</figure>
 				<p className="text-sm font-light ">{title}</p>
+				{!deleteProductsCard && <p className="text-sm font-bold ">{price}</p>}
 			</div>
 			{deleteProductsCard && (
 				<div

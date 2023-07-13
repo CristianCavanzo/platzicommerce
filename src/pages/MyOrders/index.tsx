@@ -10,12 +10,14 @@ interface PropsOrdersCard {
 }
 const OrdersCard = ({ totalPrice, totalProducts, date }: PropsOrdersCard) => {
 	return (
-		<div className="flex justify-between items-center mb-3 border border-black">
-			<p>
-				<span>{date.toLocaleDateString()}</span>
-				<span>$ {totalPrice.toFixed(2)}</span>
-				<span>Total: {totalProducts}</span>
-			</p>
+		<div className="flex justify-between items-center border border-black w-80 p-4 gap-x-4 mb-4 rounded-xl">
+			<div className="flex justify-between w-full items-center">
+				<p className="flex gap-x-2 flex-col">
+					<span className="text-ligth">{date.toLocaleDateString()}</span>
+					<span className="text-ligth">{totalProducts} articles</span>
+				</p>
+				<span className="font-bold text-2xl">$ {totalPrice.toFixed(2)}</span>
+			</div>
 		</div>
 	);
 };
@@ -25,7 +27,7 @@ const MyOrders = () => {
 	const { order } = state;
 	return (
 		<Layout>
-			<div className="flex w-80 items-center  ">
+			<div className="flex w-80 items-center mb-6  ">
 				<h1 className="w-full text-center">My Orders</h1>
 			</div>
 			{order.map((order) => (

@@ -2,19 +2,20 @@ import { Products } from '@types';
 import { useProducts } from 'hooks/useProducts';
 import React, { ReactNode, createContext, useContext } from 'react';
 interface Order {
+	id: string;
 	date: Date;
 	products: Products[];
 	totalProducts: number;
-	totalPrice: Number;
+	totalPrice: number;
 }
 
 export interface Context {
 	state: {
-		productOpen: Boolean;
+		productOpen: boolean;
 		shoppingCard: number;
 		productInfo: Products;
 		cartProducts: Products[];
-		checkoutOpen: Boolean;
+		checkoutOpen: boolean;
 		order: Order[];
 	};
 	setState: {

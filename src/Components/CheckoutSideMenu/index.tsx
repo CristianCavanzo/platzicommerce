@@ -1,8 +1,9 @@
 import { AsideComponent } from '@components/Generals/Aside';
-import { OrderCard } from '@components/CheckoutSideMenu/OrderCard';
 import { ProductsConsumer } from '@context/Products';
 import React from 'react';
 import { totalPrice } from 'utils';
+import Link from 'next/link';
+import { OrderCard } from '@components/Generals/OrderCard';
 const CheckoutSideManu = () => {
 	const { state, setState } = ProductsConsumer();
 	const { openChekout, deleteProductsCard, checkout } = setState;
@@ -24,9 +25,11 @@ const CheckoutSideManu = () => {
 						<span>Total: </span>
 						<span className="text-bold">{total}</span>
 					</p>
-					<button className="w-full bg-black text-white py-2 rounded" onClick={handleCheckout}>
-						Checkout
-					</button>
+					<Link href="/MyOrders/last">
+						<button className="w-full bg-black text-white py-2 rounded" onClick={handleCheckout}>
+							Checkout
+						</button>
+					</Link>
 				</div>
 			}
 		>

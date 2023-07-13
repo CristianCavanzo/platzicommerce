@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Products } from '@types';
 import { Context } from '@context/Products';
 interface Props extends Products {
-	deleteProductsCard: Context['setState']['deleteProductsCard'];
+	deleteProductsCard?: Context['setState']['deleteProductsCard'];
 }
 
 const OrderCard = ({ image, title, price, deleteProductsCard, id }: Props) => {
@@ -21,16 +21,18 @@ const OrderCard = ({ image, title, price, deleteProductsCard, id }: Props) => {
 				</figure>
 				<p className="text-sm font-light ">{title}</p>
 			</div>
-			<div
-				className="flex items-center gap-1"
-				role="button"
-				tabIndex={0}
-				onClick={handleDelete}
-				onKeyDown={handleDelete}
-			>
-				<p className="font-lg font-medium">{price}</p>
-				<XMarkIcon className="h-6 w-6 text-black cursor-pointer" />
-			</div>
+			{deleteProductsCard && (
+				<div
+					className="flex items-center gap-1"
+					role="button"
+					tabIndex={0}
+					onClick={handleDelete}
+					onKeyDown={handleDelete}
+				>
+					<p className="font-lg font-medium">{price}</p>
+					<XMarkIcon className="h-6 w-6 text-black cursor-pointer" />
+				</div>
+			)}
 		</div>
 	);
 };

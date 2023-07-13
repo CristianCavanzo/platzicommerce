@@ -50,8 +50,9 @@ const useProducts = (): Context => {
 		const newValue = state.cartProducts.length;
 		setState({ ...state, cartProducts: newProducts, shoppingCard: newValue });
 	};
-	const checkout = (totalPrice: Number) => {
+	const checkout = (totalPrice: number) => {
 		const orderToAdd = {
+			id: crypto.randomUUID(),
 			date: new Date(),
 			products: state.cartProducts,
 			totalProducts: state.cartProducts.length,

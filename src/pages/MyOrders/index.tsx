@@ -26,10 +26,7 @@ const MyOrders = () => {
 	const { state } = ProductsConsumer();
 	const { order } = state;
 	return (
-		<Layout>
-			<div className="flex w-80 items-center mb-6  ">
-				<h1 className="w-full text-center">My Orders</h1>
-			</div>
+		<Layout title="My order">
 			{order.map((order) => (
 				<Link href={`/MyOrders/${order.id}`} key={order.id}>
 					<OrdersCard

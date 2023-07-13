@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from '@components/Generals/Layout';
 const SigIn = () => {
 	return (
-		<Layout>
+		<Layout title="Sig in">
 			<div></div>
 		</Layout>
 	);

@@ -1,6 +1,7 @@
 import { Context } from '@context/Products';
 import { Products } from '@types';
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const useProducts = (): Context => {
 	const [state, setState] = useState<Context['state']>({
@@ -17,7 +18,18 @@ const useProducts = (): Context => {
 		cartProducts: [],
 		checkoutOpen: false,
 		order: [],
+		products: [],
+		productsByTitle: [],
+		search: '',
 	});
+	useEffect(() => {
+		(async () => {
+			const { data: products } = await axios<Products[]>({
+				url: 'https://fakestoreapi.com/products',
+			});
+			setState({ ...state, products });
+		})();
+	}, []);
 
 	const handleCount = () => {
 		const newValue = state.shoppingCard + 1;
@@ -63,6 +75,11 @@ const useProducts = (): Context => {
 		setState({ ...state, cartProducts: [], order, shoppingCard: 0 });
 	};
 
+	const changeSearch = (search: string) => {
+		const productsFilter = state.products.filter((item) => item.title === search);
+		setState({ ...state, search, productsByTitle: productsFilter });
+	};
+
 	const setStateHandle: Context['setState'] = {
 		handleCount,
 		openAside,
@@ -71,6 +88,7 @@ const useProducts = (): Context => {
 		openChekout,
 		deleteProductsCard,
 		checkout,
+		changeSearch,
 	};
 	return { state, setState: setStateHandle };
 };

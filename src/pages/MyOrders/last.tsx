@@ -10,7 +10,7 @@ const MyOrderLast = () => {
 	const { order } = state;
 	order.at(-1);
 	return (
-		<Layout>
+		<Layout title="My orders">
 			<div className="flex w-80 items-center mb-2  ">
 				<Link href="/MyOrders">
 					<ChevronLeftIcon className="h-6 w-6 cursor-pointer" />

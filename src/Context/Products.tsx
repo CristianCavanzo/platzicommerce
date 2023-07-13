@@ -17,6 +17,9 @@ export interface Context {
 		cartProducts: Products[];
 		checkoutOpen: boolean;
 		order: Order[];
+		products: Products[];
+		productsByTitle: Products[];
+		search: string;
 	};
 	setState: {
 		handleCount: () => void;
@@ -27,6 +30,7 @@ export interface Context {
 		addProductsToCard: (product: Products) => void;
 		deleteProductsCard: (id: number) => void;
 		checkout: (total: number) => void;
+		changeSearch: (search: string) => void;
 		/* eslint-enable no-unused-vars */
 	};
 }
@@ -46,6 +50,9 @@ const ProductsContext = createContext<Context>({
 		},
 		cartProducts: [],
 		order: [],
+		products: [],
+		productsByTitle: [],
+		search: '',
 	},
 	setState: {
 		handleCount: () => {},
@@ -55,6 +62,7 @@ const ProductsContext = createContext<Context>({
 		addProductsToCard: () => {},
 		deleteProductsCard: () => {},
 		checkout: () => {},
+		changeSearch: () => {},
 	},
 });
 
